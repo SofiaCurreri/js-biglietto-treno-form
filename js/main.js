@@ -10,6 +10,8 @@ const inputAgeEl = document.getElementById("user-age");
 const inputKmEl = document.getElementById("user-km");
 
 
+const inputPasseggero = document.getElementById("name-surname");
+
 buttonEl.addEventListener(
     "click",
     function () {
@@ -19,15 +21,19 @@ buttonEl.addEventListener(
         const prezzo = 0.21 * userKm;
         let new_prezzo;
 
-        if (userAge < 18) {
+        if (userAge == "minorenne") {
             new_prezzo = prezzo - (0.2 * prezzo);
-        } else if (userAge > 65) {
+        } else if (userAge == "over65") {
             new_prezzo = prezzo - (0.4 * prezzo);
         } else {
             new_prezzo = prezzo;
         }
 
-        document.getElementById("outputCosto").innerHTML = "Il prezzo del biglietto è " + new_prezzo.toFixed(2) + " €";
+        document.getElementById("nome-passeggero").innerHTML = inputPasseggero.value;
+        document.getElementById("code").innerHTML = parseInt((Math.random() * 10000) + 1);
+        document.getElementById("carrozza").innerHTML = parseInt((Math.random() * 10) + 1);
+        document.getElementById("posto").innerHTML = parseInt((Math.random() * 30) + 1);
+        document.getElementById("outputCosto").innerHTML = new_prezzo.toFixed(2) + " €";
     }
 );
 
